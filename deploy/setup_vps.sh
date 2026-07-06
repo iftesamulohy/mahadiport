@@ -22,7 +22,7 @@ set -euo pipefail
 # ╔══════════════════════════════════════════════════════════════════╗
 # ║  EDIT THESE VALUES BEFORE RUNNING                                ║
 # ╚══════════════════════════════════════════════════════════════════╝
-DOMAIN="CHANGE_ME.com"                    # the NEW domain, WITHOUT www
+DOMAIN="mdmahadihasan.com"                # the NEW domain, WITHOUT www
 CERTBOT_EMAIL="iftesamulohy@gmail.com"    # for Let's Encrypt expiry notices
 
 # Repo to clone. For a PUBLIC repo, a plain https URL is enough.
