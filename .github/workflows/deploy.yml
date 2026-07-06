@@ -1,0 +1,30 @@
+name: Deploy to VPS
+
+# Auto-deploy on every push to main. Runs deploy/update.sh on the server
+# over SSH, which pulls, installs deps, migrates, collectstatic, and restarts
+# the namespaced "mahadi" gunicorn service — site #1 (ohydev) is untouched.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
+
+concurrency:
+  group: deploy-mahadi
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script_stop: true
+          command_timeout: 20m
+          script: |
+            cd /var/www/mahadi
+            bash deploy/update.sh
