@@ -62,6 +62,8 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    # Force English on first visit (before Locale reads Accept-Language).
+    "apps.core.middleware.DefaultEnglishMiddleware",
     # LocaleMiddleware sits after Session, before Common (language from cookie).
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",

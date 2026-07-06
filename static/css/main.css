@@ -559,6 +559,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.
 @media (max-width: 860px) {
   .nav__links { display: none; }
   .nav__cta { display: none; }
+  .nav__actions { margin-left: auto; } /* push actions (incl. burger) to the right edge */
   .nav__actions > .lang-switch { display: none; } /* shown inside the overlay instead */
   .nav__burger { display: inline-flex; }
 }
