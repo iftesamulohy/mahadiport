@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}404 — {% translate "This funnel has no conversions." %} · {{ site.site_name }}{% endblock %}
+{% block meta_description %}{% translate "Page not found." %}{% endblock %}
+
+{% block content %}
+<section class="section notfound">
+  <div class="container notfound__inner">
+    <span class="eyebrow">// {% translate "ERROR 404" %}</span>
+    <h1 class="notfound__code mono">404</h1>
+    <h2 class="notfound__title">{% translate "This funnel has no conversions." %}</h2>
+    <p class="notfound__text">{% translate "The page you're looking for didn't convert — it's not here. Let's get you back to something that performs." %}</p>
+    <div class="notfound__cta">
+      <a href="/" class="btn btn--primary">← {% translate "Back to home" %}</a>
+      <a href="/#contact" class="btn btn--ghost">{% translate "Book a free audit" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

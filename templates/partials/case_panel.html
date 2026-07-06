@@ -1,0 +1,53 @@
+{% load portfolio_extras i18n %}
+<div class="case-panel">
+  <span class="eyebrow">{{ case.client_type }}</span>
+  <h3 class="case-panel__title">{{ case.title }}</h3>
+
+  {% if case.cover_image %}
+    <img class="case-panel__cover" src="{{ case.cover_image.url }}" alt="" loading="lazy">
+  {% endif %}
+
+  <div class="case-panel__metrics">
+    {% for m in case.metrics.all %}
+      <div class="metric-card {% if m.direction == 'up_good' %}is-up{% else %}is-down{% endif %} reveal">
+        <div class="metric-card__label mono">{{ m.label }}</div>
+        <div class="metric-card__nums">
+          <span class="metric-card__before">{{ m.before_val }}</span>
+          <span class="metric-card__arrow">→</span>
+          {% if m.numeric_after is not None %}
+            <span class="metric-card__after mono"
+                  data-count="{{ m.numeric_after|stringformat:'f' }}"
+                  data-count-from="{{ m.numeric_before|default:0|stringformat:'f' }}"
+                  data-decimals="{{ m.numeric_after|decimals }}"
+                  data-prefix="{{ m.prefix }}"
+                  data-suffix="{{ m.suffix }}">{{ m.after_val }}</span>
+          {% else %}
+            <span class="metric-card__after mono">{{ m.after_val }}</span>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="case-panel__body">
+    <div class="case-block">
+      <span class="eyebrow">// {% translate "CHALLENGE" %}</span>
+      <p>{{ case.challenge }}</p>
+    </div>
+    <div class="case-block">
+      <span class="eyebrow">// {% translate "APPROACH" %}</span>
+      <p>{{ case.approach }}</p>
+    </div>
+    <div class="case-block case-block--result">
+      <span class="eyebrow">// {% translate "RESULT" %}</span>
+      <p>{{ case.result_text }}</p>
+    </div>
+  </div>
+
+  <a href="#contact" class="btn btn--primary"
+     @click="open = false; history.pushState({}, '', '/')">{% translate "Get results like this" %} →</a>
+</div>
+<script>
+  // Animate the before→after numbers whenever this panel is (re)loaded.
+  if (window.__reveal) window.__reveal.register(document.getElementById('drawer-body'));
+</script>

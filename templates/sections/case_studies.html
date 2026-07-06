@@ -1,0 +1,60 @@
+{% load portfolio_extras i18n %}
+<section class="section case-studies" id="case-studies"
+         x-data="{ open: {% if open_case %}true{% else %}false{% endif %} }"
+         @keydown.escape.window="open = false">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">// {% translate "CASE STUDIES" %}</span>
+      <h2 class="section-title">{% translate "Proof, not promises." %}</h2>
+      <p class="section-lead">{% translate "Real campaign work — restructures, tracking fixes and creative sprints — with the before/after numbers that mattered." %}</p>
+    </div>
+
+    <div class="case-grid">
+      {% for case in case_studies %}
+        <article class="case-card card reveal" data-delay
+                 style="--reveal-delay: {{ forloop.counter0|times:90 }}ms">
+          <button class="case-card__btn"
+                  hx-get="{% url 'portfolio:case_panel' case.slug %}"
+                  hx-target="#drawer-body" hx-swap="innerHTML"
+                  hx-push-url="{% url 'portfolio:case_detail' case.slug %}"
+                  @click="open = true"
+                  aria-haspopup="dialog">
+            {% if case.is_featured %}<span class="case-card__flag mono">{% translate "FEATURED" %}</span>{% endif %}
+            <span class="eyebrow case-card__eyebrow">{% translate "CASE" %} {{ forloop.counter|stringformat:'02d' }}</span>
+            <h3 class="case-card__title">{{ case.title }}</h3>
+            <span class="chip">{{ case.client_type }}</span>
+            <div class="case-card__pills">
+              {% for m in case.metrics.all %}
+                <span class="pill">
+                  <span class="pill__label mono">{{ m.label }}</span>
+                  <span class="pill__before">{{ m.before_val }}</span>
+                  <span class="pill__arrow">→</span>
+                  <span class="pill__after">{{ m.after_val }}</span>
+                </span>
+              {% endfor %}
+            </div>
+            <span class="case-card__cta mono">{% translate "View breakdown" %} →</span>
+          </button>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# ---- Slide-over drawer (Alpine open/close, HTMX loads content) ---- #}
+  <div class="drawer" x-show="open" x-cloak
+       x-transition:enter="drawer--in" x-transition:leave="drawer--out">
+    <div class="drawer__backdrop"
+         @click="open = false; history.pushState({}, '', '/')"></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Case study detail">
+      <button class="drawer__close" @click="open = false; history.pushState({}, '', '/')"
+              aria-label="Close">✕</button>
+      <div id="drawer-body">
+        {% for case in case_studies %}
+          {% if case.slug == open_case %}
+            {% include "partials/case_panel.html" with case=case %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </aside>
+  </div>
+</section>

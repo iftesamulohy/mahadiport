@@ -1,0 +1,69 @@
+{% load static i18n %}
+<section class="hero" id="hero">
+  <div class="container hero__grid">
+
+    {# ---- Left: copy ---- #}
+    <div class="hero__copy">
+      <span class="eyebrow">{{ site.hero_eyebrow }}</span>
+      <h1 class="hero__headline">{{ site.hero_headline }}</h1>
+      <p class="hero__subtext">{{ site.hero_subtext }}</p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--primary" data-boost-curve>{% translate "Book a free audit" %}</a>
+        {% if site.cv_file %}
+          <a href="{{ site.cv_file.url }}" class="btn btn--ghost" download>
+            {% translate "Download CV" %}
+          </a>
+        {% endif %}
+      </div>
+      <ul class="hero__trust mono">
+        <li>Pixel + CAPI</li><li>GA4</li><li>Advantage+</li>
+      </ul>
+    </div>
+
+    {# ---- Right: live performance curve ---- #}
+    <div class="hero__chart">
+      <div class="chart" data-curve
+           aria-label="Live ad-performance chart: ROAS rising, CPL falling.">
+        {# Floating ticking metric chips #}
+        <div class="chart__chip chart__chip--roas mono" data-chip="roas">
+          <span class="chart__chip-label">ROAS</span>
+          <span class="chart__chip-val" data-chip-roas>4.2x</span>
+          <span class="chart__chip-arrow up">▲</span>
+        </div>
+        <div class="chart__chip chart__chip--cpl mono" data-chip="cpl">
+          <span class="chart__chip-label">CPL</span>
+          <span class="chart__chip-val" data-chip-cpl>$3.40</span>
+          {# lower CPL is GOOD → the ▼ is coloured with signal-up #}
+          <span class="chart__chip-arrow up">▼</span>
+        </div>
+
+        <svg class="chart__svg" viewBox="0 0 600 320" preserveAspectRatio="none"
+             role="img" data-curve-svg>
+          <defs>
+            <linearGradient id="roasArea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="var(--curve-glow)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+          </defs>
+          <g class="chart__grid" data-curve-grid></g>
+          <path class="chart__area" data-curve-area d=""/>
+          <path class="chart__cpl"  data-curve-cpl  d=""/>
+          <path class="chart__roas" data-curve-roas d=""/>
+          <g class="chart__crosshair" data-curve-cross>
+            <line data-cross-line x1="0" y1="0" x2="0" y2="320"/>
+            <circle data-cross-dot r="4"/>
+          </g>
+          <g class="chart__dot" data-curve-tip>
+            <circle class="chart__dot-halo" r="9"/>
+            <circle class="chart__dot-core" r="4"/>
+          </g>
+        </svg>
+
+        <div class="chart__tooltip mono" data-curve-tooltip hidden></div>
+        <div class="chart__axis mono">
+          <span>Day 1</span><span>Day 15</span><span>Day 30</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

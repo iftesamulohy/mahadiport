@@ -1,0 +1,15 @@
+New lead from your portfolio site 🚀
+
+Name:     {{ lead.name }}
+Phone:    {{ lead.phone }}
+Email:    {{ lead.email|default:"—" }}
+Sells:    {{ lead.business|default:"—" }}
+Budget:   {{ lead.get_monthly_budget_display|default:"—" }}
+From:     {{ lead.source_path|default:"—" }}
+When:     {{ lead.created_at }}
+
+Message:
+{{ lead.message|default:"(no message)" }}
+
+—
+Reply fast — phone is primary in BD.

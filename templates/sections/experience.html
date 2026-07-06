@@ -1,0 +1,39 @@
+{% load portfolio_extras i18n %}
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">// {% translate "EXPERIENCE" %}</span>
+      <h2 class="section-title">{% translate "Where the reps came from." %}</h2>
+    </div>
+
+    <div class="timeline">
+      {% for exp in experiences %}
+        <div class="timeline__entry reveal" data-delay
+             style="--reveal-delay: {{ forloop.counter0|times:120 }}ms">
+          <span class="timeline__node {% if exp.is_current %}is-current{% endif %}"></span>
+          <div class="timeline__card card">
+            <div class="timeline__top">
+              <div>
+                <h3 class="timeline__role">{{ exp.role }}</h3>
+                <div class="timeline__company">{{ exp.company }}</div>
+              </div>
+              {% if exp.is_current %}
+                <span class="badge-running mono"><span class="badge-running__dot"></span>{% translate "Running" %}</span>
+              {% endif %}
+            </div>
+            <div class="timeline__meta mono">
+              <span>{{ exp.start_label }} — {{ exp.end_label }}</span>
+              {% if exp.location %}<span>· {{ exp.location }}</span>{% endif %}
+            </div>
+            {% if exp.summary %}<p class="timeline__summary">{{ exp.summary }}</p>{% endif %}
+            <ul class="timeline__points">
+              {% for point in exp.points.all %}
+                <li>{{ point.text }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

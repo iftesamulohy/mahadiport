@@ -1,0 +1,15 @@
+{% load portfolio_extras %}
+<section class="stats" id="stats" aria-label="Key numbers">
+  <div class="container stats__row">
+    {% for stat in stats %}
+      <div class="stat reveal" data-delay style="--reveal-delay: {{ forloop.counter0|times:80 }}ms">
+        <div class="stat__value mono"
+             data-count="{{ stat.value|stringformat:'f' }}"
+             data-decimals="{{ stat.value|decimals }}"
+             data-prefix="{{ stat.prefix }}"
+             data-suffix="{{ stat.suffix }}">{{ stat.prefix }}0{{ stat.suffix }}</div>
+        <div class="stat__label">{{ stat.label }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{% load i18n %}
+{% get_current_language as CUR %}
+{% comment %}Dashboard EN/BN toggle. Posts to set_language, returns to current page.{% endcomment %}
+<form action="{% url 'set_language' %}" method="post" class="lang-switch">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <button type="submit" name="language" value="en"
+          class="lang-switch__opt mono {% if CUR == 'en' %}is-active{% endif %}"
+          {% if CUR == 'en' %}aria-current="true"{% endif %}>EN</button>
+  <span class="lang-switch__sep">/</span>
+  <button type="submit" name="language" value="bn"
+          class="lang-switch__opt lang-switch__opt--bn {% if CUR == 'bn' %}is-active{% endif %}"
+          {% if CUR == 'bn' %}aria-current="true"{% endif %}>বাং</button>
+</form>

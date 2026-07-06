@@ -1,0 +1,24 @@
+{% load static i18n %}
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__name">{{ site.site_name }}</div>
+      <div class="footer__tagline">{{ site.tagline }}</div>
+    </div>
+
+    <div class="footer__social">
+      {% if site.facebook_url %}<a href="{{ site.facebook_url }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+      {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+      {% if site.whatsapp_link %}<a href="{{ site.whatsapp_link }}" target="_blank" rel="noopener" data-track-contact>WhatsApp</a>{% endif %}
+      <a href="mailto:{{ site.email }}" data-track-contact>Email</a>
+    </div>
+
+    <div class="footer__meta">
+      {% include "partials/theme_toggle.html" %}
+      <span class="footer__built mono">{% translate "Built with Django + HTMX" %}</span>
+    </div>
+  </div>
+  <div class="footer__copy mono">
+    © {% now "Y" %} {{ site.site_name }} · Dhaka, Bangladesh
+  </div>
+</footer>

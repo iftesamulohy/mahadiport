@@ -1,0 +1,61 @@
+{% load static i18n %}
+<form class="lead-form" id="lead-form"
+      hx-post="{% url 'leads:submit' %}"
+      hx-target="#lead-form" hx-swap="outerHTML"
+      hx-disabled-elt="button[type=submit]">
+  {% csrf_token %}
+
+  {# Honeypot — hidden from humans, catches bots. #}
+  <div class="lead-form__hp" aria-hidden="true">
+    <label>Website{{ lead_form.website }}</label>
+  </div>
+  <input type="hidden" name="source_path" value="{{ request.path }}">
+
+  {% if lead_form.non_field_errors %}
+    <div class="lead-form__error">{{ lead_form.non_field_errors }}</div>
+  {% endif %}
+
+  <div class="lead-form__grid">
+    <div class="field">
+      <label for="{{ lead_form.name.id_for_label }}">{% translate "Name" %}</label>
+      {{ lead_form.name }}
+      {% for e in lead_form.name.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+
+    <div class="field">
+      <label for="{{ lead_form.phone.id_for_label }}">{% translate "Phone" %} <span class="req">*</span></label>
+      {{ lead_form.phone }}
+      {% for e in lead_form.phone.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+
+    <div class="field">
+      <label for="{{ lead_form.email.id_for_label }}">{% translate "Email" %} <span class="opt">({% translate "optional" %})</span></label>
+      {{ lead_form.email }}
+      {% for e in lead_form.email.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+
+    <div class="field">
+      <label for="{{ lead_form.business.id_for_label }}">{% translate "What do you sell?" %}</label>
+      {{ lead_form.business }}
+      {% for e in lead_form.business.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+
+    <div class="field field--full">
+      <label for="{{ lead_form.monthly_budget.id_for_label }}">{% translate "Monthly ad budget" %}</label>
+      {{ lead_form.monthly_budget }}
+      {% for e in lead_form.monthly_budget.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+
+    <div class="field field--full">
+      <label for="{{ lead_form.message.id_for_label }}">{% translate "Message" %}</label>
+      {{ lead_form.message }}
+      {% for e in lead_form.message.errors %}<span class="field__err">{{ e }}</span>{% endfor %}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn--primary lead-form__submit">
+    <span class="lead-form__submit-label">{% translate "Send — get my free audit" %}</span>
+    <span class="lead-form__spinner" aria-hidden="true"></span>
+  </button>
+  <p class="lead-form__note mono">{% translate "Phone is primary — I'll reply on WhatsApp or call." %}</p>
+</form>

@@ -1,0 +1,184 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mahadi-portfolio 1.0\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Case Studies"
+msgstr "কেস স্টাডি"
+
+msgid "Skills"
+msgstr "স্কিল"
+
+msgid "Experience"
+msgstr "অভিজ্ঞতা"
+
+msgid "Contact"
+msgstr "যোগাযোগ"
+
+msgid "Book audit"
+msgstr "অডিট বুক করুন"
+
+msgid "Book a free audit"
+msgstr "ফ্রি অডিট বুক করুন"
+
+msgid "Download CV"
+msgstr "সিভি ডাউনলোড"
+
+msgid "View breakdown"
+msgstr "বিস্তারিত দেখুন"
+
+msgid "Get results like this"
+msgstr "এমন ফলাফল পান"
+
+msgid "Running"
+msgstr "চলছে"
+
+msgid "Back to home"
+msgstr "হোমে ফিরুন"
+
+msgid "CASE STUDIES"
+msgstr "কেস স্টাডি"
+
+msgid "SKILLS"
+msgstr "স্কিল"
+
+msgid "EXPERIENCE"
+msgstr "অভিজ্ঞতা"
+
+msgid "CONTACT"
+msgstr "যোগাযোগ"
+
+msgid "TESTIMONIALS"
+msgstr "প্রশংসাপত্র"
+
+msgid "CASE"
+msgstr "কেস"
+
+msgid "FEATURED"
+msgstr "ফিচার্ড"
+
+msgid "CHALLENGE"
+msgstr "চ্যালেঞ্জ"
+
+msgid "APPROACH"
+msgstr "পদ্ধতি"
+
+msgid "RESULT"
+msgstr "ফলাফল"
+
+msgid "ERROR 404"
+msgstr "এরর ৪০৪"
+
+msgid "Proof, not promises."
+msgstr "প্রতিশ্রুতি নয়, প্রমাণ।"
+
+msgid ""
+"Real campaign work — restructures, tracking fixes and creative sprints — "
+"with the before/after numbers that mattered."
+msgstr ""
+"বাস্তব ক্যাম্পেইনের কাজ — রিস্ট্রাকচার, ট্র্যাকিং ঠিক করা আর ক্রিয়েটিভ "
+"স্প্রিন্ট — যে আগে/পরে সংখ্যাগুলো আসল ফারাক গড়েছে।"
+
+msgid "The stack behind the numbers."
+msgstr "সংখ্যার পেছনের টুলসেট।"
+
+msgid ""
+"From pixel plumbing to creative testing — the toolkit that makes campaigns "
+"measurable and scalable."
+msgstr ""
+"পিক্সেল সেটআপ থেকে ক্রিয়েটিভ টেস্টিং — যে টুলকিট ক্যাম্পেইনকে পরিমাপযোগ্য ও"
+" স্কেলযোগ্য করে।"
+
+msgid "Where the reps came from."
+msgstr "অভিজ্ঞতা যেখান থেকে।"
+
+msgid "What clients say — in their words."
+msgstr "ক্লায়েন্টরা যা বলেন — তাদের ভাষায়।"
+
+msgid "Free 20-minute ad account audit."
+msgstr "ফ্রি ২০ মিনিটের অ্যাড অ্যাকাউন্ট অডিট।"
+
+msgid ""
+"I'll show you where your budget is bleeding, what's mis-tracked, and the two"
+" or three moves that lower your CPL. No obligation."
+msgstr ""
+"আমি দেখিয়ে দেব আপনার বাজেট কোথায় নষ্ট হচ্ছে, কী ভুল ট্র্যাক হচ্ছে, আর কোন "
+"দুই-তিনটি পদক্ষেপে আপনার CPL কমবে। কোনো বাধ্যবাধকতা নেই।"
+
+msgid "This funnel has no conversions."
+msgstr "এই ফানেলে কোনো কনভার্সন নেই।"
+
+msgid "Page not found."
+msgstr "পেজ খুঁজে পাওয়া যায়নি।"
+
+msgid ""
+"The page you're looking for didn't convert — it's not here. Let's get you "
+"back to something that performs."
+msgstr ""
+"আপনি যে পেজটি খুঁজছেন সেটি কনভার্ট করেনি — এটি এখানে নেই। চলুন এমন কিছুতে "
+"ফিরে যাই যা পারফর্ম করে।"
+
+msgid "Name"
+msgstr "নাম"
+
+msgid "Phone"
+msgstr "ফোন"
+
+msgid "Email"
+msgstr "ইমেইল"
+
+msgid "optional"
+msgstr "ঐচ্ছিক"
+
+msgid "What do you sell?"
+msgstr "আপনি কী বিক্রি করেন?"
+
+msgid "Monthly ad budget"
+msgstr "মাসিক অ্যাড বাজেট"
+
+msgid "Message"
+msgstr "মেসেজ"
+
+msgid "Send — get my free audit"
+msgstr "পাঠান — আমার ফ্রি অডিট নিন"
+
+msgid "Phone is primary — I'll reply on WhatsApp or call."
+msgstr "ফোনই মুখ্য — আমি WhatsApp-এ বা কলে উত্তর দেব।"
+
+msgid "Your name"
+msgstr "আপনার নাম"
+
+msgid "you@example.com (optional)"
+msgstr "you@example.com (ঐচ্ছিক)"
+
+msgid "e.g. fashion page, restaurant, service…"
+msgstr "যেমন ফ্যাশন পেজ, রেস্টুরেন্ট, সার্ভিস…"
+
+msgid "Anything you want me to know?"
+msgstr "আমাকে কিছু জানাতে চান?"
+
+msgid "Select a range…"
+msgstr "একটি রেঞ্জ বাছুন…"
+
+msgid "Message received 🎉"
+msgstr "মেসেজ পেয়েছি 🎉"
+
+msgid "You'll hear from me within 24 hours — check your phone!"
+msgstr "২৪ ঘণ্টার মধ্যে আমার কাছ থেকে খবর পাবেন — ফোন চেক করুন!"
+
+msgid "I'll review your ad account and tell you where the budget is leaking."
+msgstr "আমি আপনার অ্যাড অ্যাকাউন্ট রিভিউ করে বলব বাজেট কোথায় লিক হচ্ছে।"
+
+msgid "Built with Django + HTMX"
+msgstr "Django + HTMX দিয়ে তৈরি"
+
+msgid "English"
+msgstr "ইংরেজি"
+
+msgid "বাংলা"
+msgstr "বাংলা"

@@ -1,0 +1,29 @@
+{% load static i18n %}
+<section class="section contact" id="contact">
+  <div class="container contact__grid">
+
+    {# ---- Left: pitch + direct links ---- #}
+    <div class="contact__pitch reveal">
+      <span class="eyebrow">// {% translate "CONTACT" %}</span>
+      <h2 class="section-title">{% translate "Free 20-minute ad account audit." %}</h2>
+      <p class="contact__lead">{% translate "I'll show you where your budget is bleeding, what's mis-tracked, and the two or three moves that lower your CPL. No obligation." %}</p>
+
+      <ul class="contact__links mono">
+        {% if site.whatsapp_link %}
+          <li><a href="{{ site.whatsapp_link }}" target="_blank" rel="noopener" data-track-contact>
+            <span class="contact__ico">💬</span> WhatsApp · {{ site.phone }}</a></li>
+        {% endif %}
+        <li><a href="tel:{{ site.phone }}" data-track-contact>
+          <span class="contact__ico">📞</span> {{ site.phone }}</a></li>
+        <li><a href="mailto:{{ site.email }}" data-track-contact>
+          <span class="contact__ico">✉️</span> {{ site.email }}</a></li>
+        <li><span class="contact__ico">📍</span> {{ site.location }}</li>
+      </ul>
+    </div>
+
+    {# ---- Right: HTMX lead form ---- #}
+    <div class="contact__form-wrap card reveal">
+      {% include "partials/lead_form.html" %}
+    </div>
+  </div>
+</section>

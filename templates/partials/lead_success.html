@@ -1,0 +1,16 @@
+{% load static i18n %}
+<div class="lead-success" id="lead-form" role="status">
+  <div class="lead-success__check" aria-hidden="true">
+    <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M14 27l8 8 16-16"/></svg>
+  </div>
+  <h3 class="lead-success__title">{% translate "Message received 🎉" %}</h3>
+  <p class="lead-success__text">{% translate "You'll hear from me within 24 hours — check your phone!" %}</p>
+  <p class="lead-success__sub mono">{% translate "I'll review your ad account and tell you where the budget is leaking." %}</p>
+</div>
+
+{% if site.meta_pixel_id %}
+<script>
+  // Fire the Meta Pixel Lead event on successful submit.
+  if (window.fbq) fbq('track', 'Lead');
+</script>
+{% endif %}

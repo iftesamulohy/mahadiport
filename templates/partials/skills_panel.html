@@ -1,0 +1,20 @@
+<div class="skill-list">
+  {% for skill in category.skills.all %}
+    <div class="skill" data-meter="{{ skill.proficiency }}">
+      <div class="skill__head">
+        <span class="skill__name">
+          {% if skill.icon %}<span class="skill__icon">{{ skill.icon }}</span>{% endif %}
+          {{ skill.name }}
+        </span>
+        <span class="skill__pct mono" data-meter-num>0%</span>
+      </div>
+      <div class="skill__track">
+        <span class="skill__bar" data-meter-bar style="width:0%"></span>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<script>
+  // Fill meters for freshly-swapped tab content.
+  if (window.__reveal) window.__reveal.register(document.getElementById('skills-panel'));
+</script>

@@ -1,0 +1,42 @@
+{% load static i18n %}
+<nav class="nav" x-data="{ scrolled: false, menu: false }"
+     :class="{ 'nav--scrolled': scrolled, 'nav--open': menu }"
+     @scroll.window="scrolled = window.scrollY > 40"
+     @keydown.escape.window="menu = false">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand" @click="menu = false">
+      <span class="nav__brand-mark">MH</span>
+      <span class="nav__brand-name">{{ site.site_name }}</span>
+    </a>
+
+    <div class="nav__links">
+      <a href="#case-studies">{% translate "Case Studies" %}</a>
+      <a href="#skills">{% translate "Skills" %}</a>
+      <a href="#experience">{% translate "Experience" %}</a>
+      <a href="#contact">{% translate "Contact" %}</a>
+    </div>
+
+    <div class="nav__actions">
+      {% include "partials/lang_switcher.html" %}
+      {% include "partials/theme_toggle.html" %}
+      <a href="#contact" class="btn btn--primary btn--sm nav__cta">{% translate "Book audit" %}</a>
+      <button class="nav__burger" @click="menu = !menu"
+              :aria-expanded="menu" aria-label="Toggle menu" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  {# ---- Mobile full-screen overlay menu ---- #}
+  <div class="nav__overlay" id="mobile-menu" x-show="menu" x-cloak
+       x-transition:enter="ov-enter" x-transition:leave="ov-leave">
+    <div class="nav__overlay-links">
+      <a href="#case-studies" @click="menu = false" style="--i:0">{% translate "Case Studies" %}</a>
+      <a href="#skills"       @click="menu = false" style="--i:1">{% translate "Skills" %}</a>
+      <a href="#experience"   @click="menu = false" style="--i:2">{% translate "Experience" %}</a>
+      <a href="#contact"      @click="menu = false" style="--i:3">{% translate "Contact" %}</a>
+      <a href="#contact" class="btn btn--primary" @click="menu = false" style="--i:4">{% translate "Book a free audit" %}</a>
+      <div class="nav__overlay-lang" style="--i:5">{% include "partials/lang_switcher.html" %}</div>
+    </div>
+  </div>
+</nav>

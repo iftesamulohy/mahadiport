@@ -1,0 +1,21 @@
+{# Dashboard-style theme toggle. theme.js binds the click + persistence. #}
+<button class="theme-toggle" data-theme-toggle type="button"
+        role="switch" aria-label="Toggle light / dark theme">
+  <span class="theme-toggle__label" data-theme-label>DARK</span>
+  <span class="theme-toggle__track">
+    <span class="theme-toggle__knob">
+      <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/>
+        <g stroke-linecap="round">
+          <line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/>
+          <line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/>
+          <line x1="5.2" y1="5.2" x2="7" y2="7"/><line x1="17" y1="17" x2="18.8" y2="18.8"/>
+          <line x1="18.8" y1="5.2" x2="17" y2="7"/><line x1="7" y1="17" x2="5.2" y2="18.8"/>
+        </g>
+      </svg>
+      <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/>
+      </svg>
+    </span>
+  </span>
+</button>

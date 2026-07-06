@@ -1,0 +1,29 @@
+{% load portfolio_extras i18n %}
+{% if testimonials %}
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">// {% translate "TESTIMONIALS" %}</span>
+      <h2 class="section-title">{% translate "What clients say — in their words." %}</h2>
+    </div>
+
+    <div class="chat">
+      {% for t in testimonials %}
+        <div class="chat__row reveal" data-delay
+             style="--reveal-delay: {{ forloop.counter0|times:140 }}ms">
+          <div class="chat__avatar" aria-hidden="true">
+            {% if t.avatar %}<img src="{{ t.avatar.url }}" alt="">{% else %}{{ t.initials }}{% endif %}
+          </div>
+          <div class="chat__bubble-wrap">
+            {% if forloop.first %}
+              <div class="chat__typing" aria-hidden="true"><span></span><span></span><span></span></div>
+            {% endif %}
+            <div class="chat__bubble">{{ t.quote }}</div>
+            <div class="chat__meta mono">{{ t.name }}{% if t.role_company %} · {{ t.role_company }}{% endif %}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

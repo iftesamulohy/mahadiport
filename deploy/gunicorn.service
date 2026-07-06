@@ -1,0 +1,24 @@
+[Unit]
+# Placeholders (__SERVICE__ / __APP_DIR__ / __SOCK__) are substituted by
+# deploy/setup_vps.sh and deploy/update.sh — do not run this file directly.
+Description=__SERVICE__ portfolio (Gunicorn/Django)
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=__APP_DIR__
+# Loads SECRET_KEY, ALLOWED_HOSTS, DJANGO_SETTINGS_MODULE, etc.
+EnvironmentFile=__APP_DIR__/.env
+# Fallback so Gunicorn never drops to dev settings even if .env omits it.
+Environment=DJANGO_SETTINGS_MODULE=config.settings.prod
+ExecStart=__APP_DIR__/venv/bin/gunicorn \
+          --workers 3 \
+          --bind unix:__SOCK__ \
+          config.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

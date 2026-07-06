@@ -1,0 +1,27 @@
+{% load static i18n %}
+<section class="section skills" id="skills" x-data="{ active: '{{ skill_categories.0.slug }}' }">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">// {% translate "SKILLS" %}</span>
+      <h2 class="section-title">{% translate "The stack behind the numbers." %}</h2>
+      <p class="section-lead">{% translate "From pixel plumbing to creative testing — the toolkit that makes campaigns measurable and scalable." %}</p>
+    </div>
+
+    <div class="skills__tabs reveal" role="tablist">
+      {% for cat in skill_categories %}
+        <button class="skills__tab mono"
+                :class="{ 'is-active': active === '{{ cat.slug }}' }"
+                @click="active = '{{ cat.slug }}'"
+                role="tab"
+                hx-get="{% url 'portfolio:skills_tab' cat.slug %}"
+                hx-target="#skills-panel" hx-swap="innerHTML">
+          {{ cat.name }}
+        </button>
+      {% endfor %}
+    </div>
+
+    <div id="skills-panel" class="skills__panel reveal">
+      {% include "partials/skills_panel.html" with category=skill_categories.0 %}
+    </div>
+  </div>
+</section>
