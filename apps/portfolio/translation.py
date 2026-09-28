@@ -3,6 +3,7 @@ from modeltranslation.translator import TranslationOptions, register
 from .models import (
     CaseStudy,
     CaseStudyMetric,
+    CaseStudyScreenshot,
     Experience,
     ExperiencePoint,
     SkillCategory,
@@ -38,6 +39,11 @@ class CaseStudyTR(TranslationOptions):
 @register(CaseStudyMetric)
 class CaseStudyMetricTR(TranslationOptions):
     fields = ("label",)
+
+
+@register(CaseStudyScreenshot)
+class CaseStudyScreenshotTR(TranslationOptions):
+    fields = ("caption",)
 
 
 @register(Testimonial)

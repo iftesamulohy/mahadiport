@@ -146,6 +146,37 @@ class CaseStudyMetric(models.Model):
         return f"{self.label}: {self.before_val} → {self.after_val}"
 
 
+class CaseStudyScreenshot(models.Model):
+    """Proof screenshots (Ads Manager, Events Manager, analytics…) for a case."""
+
+    KIND_CHOICES = [
+        ("ads_manager", "Ads Manager"),
+        ("events", "Events Manager / Pixel"),
+        ("analytics", "Analytics"),
+        ("creative", "Ad creative"),
+        ("sales", "Sales / Orders"),
+        ("other", "Other"),
+    ]
+    case_study = models.ForeignKey(
+        CaseStudy, related_name="screenshots", on_delete=models.CASCADE
+    )
+    image = models.ImageField(
+        upload_to="cases/screenshots/",
+        help_text="Blur client names, ad account IDs and personal data before uploading.",
+    )
+    kind = models.CharField(max_length=20, choices=KIND_CHOICES, default="ads_manager")
+    caption = models.CharField(
+        max_length=200, blank=True, help_text='e.g. "Campaign results — last 30 days".'
+    )
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order", "id"]
+
+    def __str__(self):
+        return self.caption or f"{self.get_kind_display()} #{self.pk}"
+
+
 class Testimonial(models.Model):
     name = models.CharField(max_length=120)
     role_company = models.CharField(max_length=160, blank=True)

@@ -9,7 +9,7 @@ from .models import CaseStudy, Experience, SkillCategory, StatCounter, Testimoni
 def _homepage_context():
     return {
         "stats": StatCounter.objects.all(),
-        "case_studies": CaseStudy.objects.prefetch_related("metrics").all(),
+        "case_studies": CaseStudy.objects.prefetch_related("metrics", "screenshots").all(),
         "skill_categories": SkillCategory.objects.prefetch_related("skills").all(),
         "experiences": Experience.objects.prefetch_related("points").all(),
         "testimonials": Testimonial.objects.all(),
@@ -35,7 +35,7 @@ def case_detail(request, slug):
 def case_panel(request, slug):
     """HTMX fragment: the case study detail panel loaded into the drawer."""
     case = get_object_or_404(
-        CaseStudy.objects.prefetch_related("metrics"), slug=slug
+        CaseStudy.objects.prefetch_related("metrics", "screenshots"), slug=slug
     )
     return render(request, "partials/case_panel.html", {"case": case})
 

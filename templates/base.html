@@ -88,12 +88,33 @@
 
   {% include "partials/footer.html" %}
 
+  {# ---- Screenshot lightbox (driven by js/lightbox.js, any [data-lightbox]) ---- #}
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+       aria-label="{% translate "Screenshot viewer" %}" hidden>
+    <div class="lightbox__backdrop" data-lb-close></div>
+    <figure class="lightbox__stage">
+      <img class="lightbox__img" alt="">
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__kind mono"></span>
+        <span class="lightbox__text"></span>
+        <span class="lightbox__count mono"></span>
+      </figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__close" data-lb-close aria-label="{% translate "Close" %}">✕</button>
+    <button class="lightbox__btn lightbox__nav lightbox__prev" data-lb-prev aria-label="{% translate "Previous" %}">‹</button>
+    <button class="lightbox__btn lightbox__nav lightbox__next" data-lb-next aria-label="{% translate "Next" %}">›</button>
+    <a class="lightbox__btn lightbox__open" target="_blank" rel="noopener" aria-label="{% translate "Open full size" %}">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>
+    </a>
+  </div>
+
   {# ---- Vendor + app JS (deferred) ---- #}
   <script defer src="{% static 'vendor/htmx.min.js' %}"></script>
   <script defer src="{% static 'vendor/alpine.min.js' %}"></script>
   <script defer src="{% static 'js/theme.js' %}"></script>
   <script defer src="{% static 'js/reveal.js' %}"></script>
   <script defer src="{% static 'js/curve.js' %}"></script>
+  <script defer src="{% static 'js/lightbox.js' %}"></script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

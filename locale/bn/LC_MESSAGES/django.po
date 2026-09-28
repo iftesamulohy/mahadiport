@@ -32,6 +32,36 @@ msgstr "সিভি ডাউনলোড"
 msgid "View breakdown"
 msgstr "বিস্তারিত দেখুন"
 
+msgid "proof"
+msgstr "প্রমাণ"
+
+msgid "Screenshots"
+msgstr "স্ক্রিনশট"
+
+msgid "PROOF"
+msgstr "প্রমাণ"
+
+msgid "Tap to enlarge"
+msgstr "বড় করে দেখতে ট্যাপ করুন"
+
+msgid "Open screenshot"
+msgstr "স্ক্রিনশট খুলুন"
+
+msgid "Screenshot viewer"
+msgstr "স্ক্রিনশট ভিউয়ার"
+
+msgid "Previous"
+msgstr "আগের"
+
+msgid "Next"
+msgstr "পরের"
+
+msgid "Open full size"
+msgstr "পূর্ণ আকারে খুলুন"
+
+msgid "Close"
+msgstr "বন্ধ করুন"
+
 msgid "Get results like this"
 msgstr "এমন ফলাফল পান"
 

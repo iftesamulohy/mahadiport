@@ -29,6 +29,31 @@
     {% endfor %}
   </div>
 
+  {% with shots=case.screenshots.all %}{% if shots %}
+  <div class="case-proof">
+    <div class="case-proof__head">
+      <span class="eyebrow">// {% translate "PROOF" %}</span>
+      <span class="case-proof__hint mono">{% translate "Tap to enlarge" %}</span>
+    </div>
+    <div class="case-proof__grid">
+      {% for s in shots %}
+        <button type="button" class="shot{% if forloop.first and shots|length > 2 %} shot--wide{% endif %}"
+                data-lightbox="case-{{ case.slug }}"
+                data-src="{{ s.image.url }}"
+                data-kind="{{ s.get_kind_display }}"
+                data-caption="{{ s.caption }}"
+                aria-label="{% translate "Open screenshot" %}: {{ s.caption|default:s.get_kind_display }}">
+          <img src="{{ s.image.url }}" alt="{{ s.caption|default:s.get_kind_display }}" loading="lazy" decoding="async">
+          <span class="shot__tag mono">{{ s.get_kind_display }}</span>
+          <span class="shot__zoom" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </span>
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}{% endwith %}
+
   <div class="case-panel__body">
     <div class="case-block">
       <span class="eyebrow">// {% translate "CHALLENGE" %}</span>
