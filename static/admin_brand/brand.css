@@ -1,0 +1,14 @@
+/* Mahadi brand accent for django-bangla-admin.
+ * The package's BANGLA_ADMIN["primary_color"] isn't wired into its CSS (0.3.1),
+ * so the accent tokens are overridden here to match the public site's blue. */
+:root,
+:root[data-ba-theme="dark"] {
+  --ba-primary: #4D8DFF;
+  --ba-primary-700: #2F6FE0;
+  --ba-primary-tint: rgba(77, 141, 255, .14);
+}
+:root[data-ba-theme="light"] {
+  --ba-primary: #1D6FF2;
+  --ba-primary-700: #1558C7;
+  --ba-primary-tint: rgba(29, 111, 242, .10);
+}

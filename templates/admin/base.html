@@ -1,0 +1,7 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{# Extends django-bangla-admin's shell (recursive extends) to add brand + fixes. #}
+{% block extrastyle %}{{ block.super }}
+  <link rel="stylesheet" href="{% static 'admin_brand/brand.css' %}">
+  <script src="{% static 'admin_brand/nav-fix.js' %}" defer></script>
+{% endblock %}

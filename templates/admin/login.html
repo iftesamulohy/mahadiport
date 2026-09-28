@@ -1,0 +1,116 @@
+{% load static i18n ba_i18n ba_tags %}<!DOCTYPE html>
+{# Copy of django-bangla-admin 0.3.1 admin/login.html (it has no blocks) + brand.css. #}
+<html lang="{{ ba_lang|default:'bn' }}" data-ba-theme="{{ ba_theme|default:'dark' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% translate 'Log in' %} | {{ ba.site_title|default:'Bangla Admin' }}</title>
+  <link rel="stylesheet" href="{% static 'django_bangla_admin/css/bangla-admin.css' %}">
+  <link rel="stylesheet" href="{% static 'admin_brand/brand.css' %}">
+  <style>
+    .ba-login {
+      min-height: 100vh; display: grid; place-items: center; padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    /* Decorative gradient orbs */
+    .ba-login::before, .ba-login::after {
+      content: ""; position: absolute; border-radius: 50%; filter: blur(80px);
+      opacity: .5; z-index: 0; pointer-events: none;
+    }
+    .ba-login::before {
+      width: 420px; height: 420px; top: -120px; right: -80px;
+      background: radial-gradient(circle, var(--ba-primary), transparent 70%);
+    }
+    .ba-login::after {
+      width: 360px; height: 360px; bottom: -120px; left: -100px;
+      background: radial-gradient(circle, var(--ba-info), transparent 70%);
+      opacity: .28;
+    }
+    .ba-login-card {
+      width: 100%; max-width: 400px; position: relative; z-index: 1;
+      box-shadow: var(--ba-shadow-lg);
+    }
+    .ba-login-card .ba-card-body { padding: 32px; }
+    .ba-login h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -.01em; }
+    .ba-login .sub { color: var(--ba-muted); margin: 0 0 24px; font-size: 13px; }
+    .ba-field { margin-bottom: 16px; }
+    .ba-field label { display: block; font-size: 12px; font-weight: 600; color: var(--ba-muted); margin-bottom: 6px; }
+    .ba-input-wrap { position: relative; display: flex; align-items: center; }
+    .ba-input-wrap .ba-icon {
+      position: absolute; left: 12px; width: 18px; height: 18px;
+      color: var(--ba-faint); pointer-events: none;
+    }
+    .ba-field input {
+      width: 100%; padding: 11px 12px 11px 40px; border-radius: var(--ba-radius-sm);
+      font-family: inherit; font-size: 14px;
+      background: var(--ba-surface-2); border: 1px solid var(--ba-border);
+      color: var(--ba-text); outline: none; transition: border-color .12s ease, box-shadow .12s ease;
+    }
+    .ba-field input:focus { border-color: var(--ba-primary); box-shadow: var(--ba-ring); }
+    .ba-field input:focus + .ba-icon, .ba-input-wrap:focus-within .ba-icon { color: var(--ba-primary); }
+    .ba-login .ba-btn {
+      width: 100%; padding: 12px; border: 0; border-radius: var(--ba-radius-sm); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: linear-gradient(135deg, var(--ba-primary), var(--ba-primary-700));
+      color: #06201D; font-weight: 700; font-size: 14px; font-family: inherit;
+      margin-top: 6px; transition: filter .12s ease, box-shadow .12s ease, transform .06s ease;
+    }
+    .ba-login .ba-btn:hover { filter: brightness(1.05); box-shadow: 0 8px 24px var(--ba-primary-tint); border-color: transparent; }
+    .ba-login .ba-btn:active { transform: translateY(1px); }
+    .ba-login .ba-btn .ba-icon { width: 18px; height: 18px; }
+    .ba-login .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; font-weight: 700; font-size: 18px; }
+    .ba-login .brand .m {
+      width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--ba-primary), var(--ba-primary-700));
+      color: #06201D; font-weight: 800; font-size: 18px;
+      box-shadow: 0 6px 16px var(--ba-primary-tint);
+    }
+    .ba-errornote {
+      color: var(--ba-danger); font-size: 13px; margin: 0 0 16px; padding: 10px 14px;
+      background: rgba(248, 81, 73, .08); border: 1px solid rgba(248, 81, 73, .3);
+      border-radius: var(--ba-radius-sm);
+    }
+  </style>
+</head>
+<body>
+<div class="ba-login">
+  <div class="ba-card ba-login-card">
+    <div class="ba-card-body">
+      <div class="brand">
+        <span class="m">{{ ba.site_brand.en|default:ba.site_title|slice:":1"|upper }}</span>
+        <span>{% ba_label ba.site_brand %}</span>
+      </div>
+      <h1>{% translate 'Sign in' %}</h1>
+      <p class="sub">{% ba_label ba.welcome_sign %}</p>
+
+      {% if form.errors and not form.non_field_errors %}
+        <p class="ba-errornote">{% translate 'Please correct the errors below.' %}</p>
+      {% endif %}
+      {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}<p class="ba-errornote">{{ error }}</p>{% endfor %}
+      {% endif %}
+
+      <form action="{{ app_path }}" method="post" id="login-form">
+        {% csrf_token %}
+        <div class="ba-field">
+          <label for="id_username">{{ form.username.label }}</label>
+          <div class="ba-input-wrap">
+            {{ form.username }}
+            {% ba_icon "user" %}
+          </div>
+        </div>
+        <div class="ba-field">
+          <label for="id_password">{{ form.password.label }}</label>
+          <div class="ba-input-wrap">
+            {{ form.password }}
+            {% ba_icon "lock" %}
+          </div>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit" class="ba-btn">{% ba_icon "log-in" %}{% translate 'Log in' %}</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

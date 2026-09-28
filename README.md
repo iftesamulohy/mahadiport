@@ -43,6 +43,21 @@ Set the **Meta Pixel ID**, social links, CV file and OG image from
 Admin → Site Core → Site Settings. The Pixel base code (PageView / Lead / Contact
 events) only renders when a Pixel ID is set.
 
+## Admin (django-bangla-admin)
+`/admin/` uses [django-bangla-admin](https://pypi.org/project/django-bangla-admin/):
+HTMX sidebar navigation, dark/light, EN/বাংলা toggle and a dashboard of KPI cards +
+Chart.js charts (leads per month, leads by budget, proof screenshots by type/case,
+skills per category). Everything is declared in `BANGLA_ADMIN` in
+`config/settings/base.py` — add a chart there, no Python needed.
+
+Local tweaks for package 0.3.1 bugs (drop them once fixed upstream):
+- `static/admin_brand/brand.css` — blue accent (`primary_color` isn't applied by the package).
+- `static/admin_brand/nav-fix.js` — sidebar active state (missing class space; Dashboard always active).
+- `templates/admin/base.html` loads both; `templates/admin/login.html` is a copy of the
+  package's login (it has no blocks) with `brand.css` added.
+
+The admin's language toggle sets the same `django_language` cookie as the site.
+
 ## Production
 ```bash
 export DJANGO_SETTINGS_MODULE=config.settings.prod
