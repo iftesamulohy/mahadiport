@@ -53,6 +53,8 @@ skills per category). Everything is declared in `BANGLA_ADMIN` in
 Local tweaks for package 0.3.1 bugs (drop them once fixed upstream):
 - `static/admin_brand/brand.css` — blue accent (`primary_color` isn't applied by the package).
 - `static/admin_brand/nav-fix.js` — sidebar active state (missing class space; Dashboard always active).
+- `static/django_bangla_admin/vendor/chart.umd.js.map` — empty stub: the package's
+  Chart.js references a source map it doesn't ship, which fails prod `collectstatic`.
 - `templates/admin/base.html` loads both; `templates/admin/login.html` is a copy of the
   package's login (it has no blocks) with `brand.css` added.
 
