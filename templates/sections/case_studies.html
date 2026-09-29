@@ -19,6 +19,11 @@
                   hx-push-url="{% url 'portfolio:case_detail' case.slug %}"
                   @click="open = true"
                   aria-haspopup="dialog">
+            {% if case.cover_image %}
+              <span class="case-card__cover">
+                <img src="{{ case.cover_image.url }}" alt="{{ case.title }}" loading="lazy">
+              </span>
+            {% endif %}
             {% if case.is_featured %}<span class="case-card__flag mono">{% translate "FEATURED" %}</span>{% endif %}
             <span class="eyebrow case-card__eyebrow">{% translate "CASE" %} {{ forloop.counter|stringformat:'02d' }}</span>
             <h3 class="case-card__title">{{ case.title }}</h3>
