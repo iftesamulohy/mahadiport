@@ -4,7 +4,17 @@
   <h3 class="case-panel__title">{{ case.title }}</h3>
 
   {% if case.cover_image %}
-    <img class="case-panel__cover" src="{{ case.cover_image.url }}" alt="" loading="lazy">
+    <button type="button" class="case-panel__cover"
+            data-lightbox="case-{{ case.slug }}"
+            data-src="{{ case.cover_image.url }}"
+            data-kind="{% translate "Cover" %}"
+            data-caption="{{ case.title }}"
+            aria-label="{% translate "Open cover image" %}">
+      <img src="{{ case.cover_image.url }}" alt="{{ case.title }}" loading="lazy" decoding="async">
+      <span class="shot__zoom" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      </span>
+    </button>
   {% endif %}
 
   <div class="case-panel__metrics">

@@ -212,3 +212,9 @@ msgstr "ইংরেজি"
 
 msgid "বাংলা"
 msgstr "বাংলা"
+
+msgid "Cover"
+msgstr "কভার"
+
+msgid "Open cover image"
+msgstr "কভার ছবি বড় করে দেখুন"
